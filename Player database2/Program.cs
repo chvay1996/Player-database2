@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Player_database2
@@ -15,7 +15,6 @@ namespace Player_database2
     class Database
     {
         private List<Player> _players = new List<Player>();
-        string inport = "";
         int checkingForANumber;
 
         public void Work()
@@ -82,12 +81,13 @@ namespace Player_database2
                 }
             }
         }
-
         private void DeletePlayer()
         {
+            Server();
+
             Console.Write($"Введите номер игрока: ");
 
-            TryParse(ref inport, out checkingForANumber);
+            TryParse(out checkingForANumber);
 
             _players.RemoveAt(checkingForANumber - 1);
 
@@ -102,7 +102,7 @@ namespace Player_database2
             nickName = Console.ReadLine();
 
             Console.Write("Введите лвл игрока: ");
-            isStringName = TryParse(ref inport, out checkingForANumber);
+            isStringName = TryParse(out checkingForANumber);
 
             if (isStringName)
             {
@@ -111,12 +111,13 @@ namespace Player_database2
             else Console.WriteLine("Вы ввели некорректные данные!");
             Clear();
         }
-
         private void Blocked(string block)
         {
+            Server();
+
             bool isBlock;
             Console.Write($"Введите номер игрока: ");
-            isBlock = TryParse(ref inport, out checkingForANumber);
+            isBlock = TryParse(out checkingForANumber);
 
             if (isBlock)
             {
@@ -125,10 +126,9 @@ namespace Player_database2
                     _players[checkingForANumber - 1].Blocked();
                 }
                 else _players[checkingForANumber - 1].UnBlocked();
+                Clear();
             }
-            Clear();
         }
-
         private void Server()
         {
             Console.WriteLine("Персонажи на сервере");
@@ -138,18 +138,17 @@ namespace Player_database2
                 Console.Write($"{i + 1}. ");
                 _players[i].ShowDetails();
             }
-            Clear();
         }
-        private bool TryParse(ref string userInput, out int result)
+        private bool TryParse(out int result)
         {
             bool isStringNumber;
+            string userInput;
 
             userInput = Console.ReadLine();
             isStringNumber = int.TryParse(userInput, out result);
             return isStringNumber;
         }
-
-        private void Clear()
+        public void Clear()
         {
             Console.ReadKey();
             Console.SetCursorPosition(0, 7);
@@ -166,7 +165,6 @@ namespace Player_database2
         private string _nickName;
         private int _lvl;
         public bool IsBanned { get; private set; }
-
         public Player(string nickName, int lvl)
         {
             _nickName = nickName;
@@ -181,12 +179,10 @@ namespace Player_database2
                 Console.WriteLine("Ввели неверный лвл. Присвоен 1 лвл");
             }
         }
-
         public void Blocked()
         {
             IsBanned = true;
         }
-
         public void UnBlocked()
         {
             IsBanned = false;

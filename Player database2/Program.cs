@@ -151,9 +151,11 @@ namespace Player_database2
         public void Clear()
         {
             Console.ReadKey();
-            Console.SetCursorPosition(0, 7);
+            int namberVacation = 7;
+            int numberOfRepetitions = 15;
+            Console.SetCursorPosition(0, namberVacation);
 
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < numberOfRepetitions; i++)
             {
                 Console.WriteLine("\t\t\t\t\t\t\t\t\t");
             }

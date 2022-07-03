@@ -175,8 +175,9 @@ namespace Player_database2
         public Player(string nickName, int lvl)
         {
             NickName = nickName;
-
-            if (lvl > 0 && lvl <= 100)
+            int maxLvl = 100;
+            
+            if (lvl > 0 && lvl <= maxLvl)
             {
                 Lvl = lvl;
             }

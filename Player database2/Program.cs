@@ -19,10 +19,12 @@ namespace Player_database2
 
         public void Clear()
         {
+            byte indentDown = 7;
+            byte repetitions = 15;
             Console.ReadKey();
-            Console.SetCursorPosition(0, 7);
+            Console.SetCursorPosition(0, indentDown);
 
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < repetitions; i++)
             {
                 Console.WriteLine("\t\t\t\t\t\t\t\t\t");
             }
@@ -168,10 +170,6 @@ namespace Player_database2
 
     class Player
     {
-        public string NickName { get; private set; }
-        public int Lvl { get; private set; }
-        public bool IsBanned { get; private set; }
-
         public Player(string nickName, int lvl)
         {
             NickName = nickName;
@@ -203,6 +201,9 @@ namespace Player_database2
             if (IsBanned == true) Console.WriteLine($"Персонаж - {NickName}, лвл - {Lvl}, статус бана - заблокирован");
             else Console.WriteLine($"Персонаж - {NickName}, лвл - {Lvl}, статус бана - не заблокирован");
         }
+        public string NickName { get; private set; }
+        public int Lvl { get; private set; }
+        public bool IsBanned { get; private set; }
     }
 }
 //Задача:

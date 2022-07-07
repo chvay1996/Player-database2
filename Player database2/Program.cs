@@ -29,7 +29,6 @@ namespace Player_database2
                 Console.WriteLine("\t\t\t\t\t\t\t\t\t");
             }
         }
-
         public void Work()
         {
             _players.Add(new Player("Поп", 22));
@@ -94,7 +93,6 @@ namespace Player_database2
                 }
             }
         }
-
         private void DeletePlayer()
         {
             Server();
@@ -107,7 +105,6 @@ namespace Player_database2
 
             Clear();
         }
-
         private void AddPlayer()
         {
             string nickName;
@@ -126,7 +123,6 @@ namespace Player_database2
             else Console.WriteLine("Вы ввели некорректные данные!");
             Clear();
         }
-
         private void Blocked(string block)
         {
             Server();
@@ -145,7 +141,6 @@ namespace Player_database2
                 Clear();
             }
         }
-
         private void Server()
         {
             Console.WriteLine("Персонажи на сервере");
@@ -156,7 +151,6 @@ namespace Player_database2
                 _players[i].ShowDetails();
             }
         }
-
         private bool TryParse(out int result)
         {
             bool isStringNumber;
@@ -185,25 +179,22 @@ namespace Player_database2
                 Console.WriteLine("Ввели неверный лвл. Присвоен 1 лвл");
             }
         }
-
+        public string NickName { get; private set; }
+        public int Lvl { get; private set; }
+        public bool IsBanned { get; private set; }
         public void Blocked()
         {
             IsBanned = true;
         }
-
         public void UnBlocked()
         {
             IsBanned = false;
         }
-
         public void ShowDetails()
         {
             if (IsBanned == true) Console.WriteLine($"Персонаж - {NickName}, лвл - {Lvl}, статус бана - заблокирован");
             else Console.WriteLine($"Персонаж - {NickName}, лвл - {Lvl}, статус бана - не заблокирован");
         }
-        public string NickName { get; private set; }
-        public int Lvl { get; private set; }
-        public bool IsBanned { get; private set; }
     }
 }
 //Задача:
